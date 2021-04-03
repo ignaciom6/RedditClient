@@ -95,9 +95,9 @@
                                                 <imageReference key="image" image="trash.fill" catalog="system" symbolScale="small" renderingMode="original"/>
                                             </state>
                                         </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-bv-oY3">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJF-bv-oY3">
                                             <rect key="frame" x="16" y="35" width="304" height="70"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="IwF-1R-fHR"/>
                                             </constraints>
@@ -167,7 +167,7 @@
                                     <outlet property="postImg" destination="zmn-Uu-vv5" id="dPd-5Q-zvN"/>
                                     <outlet property="postViewedImg" destination="H10-ug-KO4" id="Op7-3r-lqT"/>
                                     <outlet property="postedTimeLbl" destination="dze-WB-LjK" id="pR5-oo-HLc"/>
-                                    <outlet property="titleTestView" destination="mJF-bv-oY3" id="B86-ws-gVV"/>
+                                    <outlet property="titleTxtV" destination="mJF-bv-oY3" id="XgL-9s-3jk"/>
                                     <outlet property="usernameLbl" destination="e2i-PJ-YLd" id="Kgc-vv-sE6"/>
                                 </connections>
                             </tableViewCell>

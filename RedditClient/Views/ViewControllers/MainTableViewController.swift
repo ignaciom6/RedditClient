@@ -9,16 +9,33 @@ import UIKit
 
 class MainTableViewController: UITableViewController {
     let kCellHeight: CGFloat = 140
+    var posts: [PostModel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestRedditTopPosts()
+    }
+    
+    func requestRedditTopPosts() {
+        RedditService.redditTopPosts() { [weak self] (postsData, error) in
+            guard let self = self else {return}
+            guard let postsData = postsData else {
+                print("Error: ", error?.localizedDescription ?? "")
+                return
+            }
+            self.refreshData(postsData: postsData)
+        }
+    }
+    
+    func refreshData(postsData: DataModel) {
+        posts = postsData.data.children ?? []
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 3
+        return posts.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -26,10 +43,14 @@ class MainTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
 
-        // Configure the cell...
+        //Testing Data Model
+        let post = posts[indexPath.row].data
+        cell.usernameLbl.text = post.author
+        cell.titleTxtV.text = post.title
+        cell.commentsLbl.text = "Comments " + String(post.comments)
 
         return cell
     }

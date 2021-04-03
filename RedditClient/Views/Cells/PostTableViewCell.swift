@@ -12,7 +12,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postViewedImg: UIImageView!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var postedTimeLbl: UILabel!
-    @IBOutlet weak var titleTestView: UITextView!
+    @IBOutlet weak var titleTxtV: UITextView!
     @IBOutlet weak var postImg: UIImageView!
     @IBOutlet weak var commentsLbl: UILabel!
     
