@@ -11,10 +11,14 @@ struct PostDataModel: Codable {
     var title: String
     var author: String
     var comments: Int
+    var thumbnail: String
+    var created: Int
     
     enum CodingKeys: String, CodingKey {
         case title
         case author
         case comments = "num_comments"
+        case thumbnail
+        case created = "created_utc"
     }
 }

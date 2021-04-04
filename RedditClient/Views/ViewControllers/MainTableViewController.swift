@@ -7,29 +7,25 @@
 
 import UIKit
 
+protocol PostSelectionDelegate: class {
+  func postSelected(_ newPost: PostDataModel)
+}
+
 class MainTableViewController: UITableViewController {
-    let kCellHeight: CGFloat = 140
+    private let kCellHeight: CGFloat = 140
+    private let kCellId = "PostCell"
+    private let viewModel = MainTableViewModel()
+    
     var posts: [PostModel] = []
+    weak var delegate: PostSelectionDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestRedditTopPosts()
-    }
-    
-    func requestRedditTopPosts() {
-        RedditService.redditTopPosts() { [weak self] (postsData, error) in
-            guard let self = self else {return}
-            guard let postsData = postsData else {
-                print("Error: ", error?.localizedDescription ?? "")
-                return
-            }
-            self.refreshData(postsData: postsData)
+        
+        viewModel.posts.bind { [weak self] posts in
+            self?.posts = posts ?? []
+            self?.tableView.reloadData()
         }
-    }
-    
-    func refreshData(postsData: DataModel) {
-        posts = postsData.data.children ?? []
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -44,7 +40,7 @@ class MainTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: kCellId, for: indexPath) as! PostTableViewCell
 
         //Testing Data Model
         let post = posts[indexPath.row].data
@@ -55,50 +51,10 @@ class MainTableViewController: UITableViewController {
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedPost = posts[indexPath.row].data
+        delegate?.postSelected(selectedPost)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
