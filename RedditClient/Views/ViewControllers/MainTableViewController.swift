@@ -21,7 +21,7 @@ class MainTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.remembersLastFocusedIndexPath = true
         self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
         
         viewModel.posts.bind { [weak self] posts in
@@ -57,6 +57,13 @@ class MainTableViewController: UITableViewController {
         cell.commentsLbl.text = "Comments " + String(post.comments)
         cell.postImg.load(urlString: post.thumbnail)
         cell.postViewedImg.isHidden = UserDefaults.standard.bool(forKey: post.thumbnail)
+        cell.postCell = {
+            self.posts.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .left)
+            UIView.performWithoutAnimation {
+                self.tableView.reloadData()
+            }
+        }
 
         return cell
     }

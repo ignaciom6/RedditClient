@@ -8,6 +8,7 @@
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
+    var postCell: (() -> Void)? = nil
 
     @IBOutlet weak var postViewedImg: UIImageView!
     @IBOutlet weak var usernameLbl: UILabel!
@@ -24,4 +25,9 @@ class PostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    @IBAction func dismissTapped(_ sender: Any) {
+        if let dismissTapped = self.postCell {
+            dismissTapped()
+        }
+    }
 }
