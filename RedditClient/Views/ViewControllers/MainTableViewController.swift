@@ -22,10 +22,18 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: UIControl.Event.valueChanged)
+        
         viewModel.posts.bind { [weak self] posts in
             self?.posts = posts ?? []
+            self?.refreshControl?.endRefreshing()
             self?.tableView.reloadData()
         }
+    }
+    
+    @objc func pullToRefresh(sender:AnyObject)
+    {
+        viewModel.getRedditPosts()
     }
 
     // MARK: - Table view data source
@@ -44,6 +52,7 @@ class MainTableViewController: UITableViewController {
 
         //Testing Data Model
         let post = posts[indexPath.row].data
+        
         cell.usernameLbl.text = post.author
         cell.titleTxtV.text = post.title
         cell.commentsLbl.text = "Comments " + String(post.comments)
