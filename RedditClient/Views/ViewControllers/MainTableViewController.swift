@@ -50,21 +50,26 @@ class MainTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: kCellId, for: indexPath) as! PostTableViewCell
 
-        //Testing Data Model
         let post = posts[indexPath.row].data
         
         cell.usernameLbl.text = post.author
         cell.titleTxtV.text = post.title
         cell.commentsLbl.text = "Comments " + String(post.comments)
         cell.postImg.load(urlString: post.thumbnail)
+        cell.postViewedImg.isHidden = UserDefaults.standard.bool(forKey: post.thumbnail)
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath) as! PostTableViewCell
+        currentCell.postViewedImg.isHidden = true
+        
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedPost = posts[indexPath.row].data
         delegate?.postSelected(selectedPost)
+        
+        UserDefaults.standard.set(true, forKey: selectedPost.thumbnail)
     }
 
 }
