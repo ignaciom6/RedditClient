@@ -13,9 +13,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
     
+    private let viewModel = DetailViewModel()
+    
     private var post: PostDataModel? {
         didSet {
-            refreshUI()
+            if let post = post {
+                viewModel.setPropertiesValuesFromPost(post)
+                refreshUI()
+            }
         }
     }
 
@@ -24,10 +29,17 @@ class DetailViewController: UIViewController {
     }
     
     func refreshUI() {
-        //TODO
-        userNameLbl.text = post?.author
-        postImage.load(urlString: post?.thumbnail ?? "")
-        titleLbl.text = post?.title
+        viewModel.username.bind { [weak self] username in
+            self?.userNameLbl.text = username
+        }
+        
+        viewModel.imageURL.bind { [weak self] imageURL in
+            self?.postImage.load(urlString: imageURL)
+        }
+        
+        viewModel.title.bind { [weak self] title in
+            self?.titleLbl.text = title
+        }
     }
     
 }
