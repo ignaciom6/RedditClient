@@ -35,7 +35,12 @@ class MainTableViewController: UITableViewController {
     {
         viewModel.getRedditPosts()
     }
-
+    
+    @IBAction func dismissAllCells(_ sender: Any) {
+        posts.removeAll()
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
