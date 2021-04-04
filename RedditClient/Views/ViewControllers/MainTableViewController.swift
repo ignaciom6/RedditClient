@@ -47,6 +47,7 @@ class MainTableViewController: UITableViewController {
         cell.usernameLbl.text = post.author
         cell.titleTxtV.text = post.title
         cell.commentsLbl.text = "Comments " + String(post.comments)
+        cell.setImage(from: post.thumbnail)
 
         return cell
     }

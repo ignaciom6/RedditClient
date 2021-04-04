@@ -9,6 +9,10 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var titleLbl: UILabel!
+    
     private var post: PostDataModel? {
         didSet {
             refreshUI()
@@ -21,8 +25,8 @@ class DetailViewController: UIViewController {
     
     func refreshUI() {
         //TODO
-        print("Title: ", post?.title ?? "")
-        print("-----")
+        userNameLbl.text = post?.author
+        titleLbl.text = post?.title
     }
     
 }
