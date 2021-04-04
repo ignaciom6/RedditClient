@@ -24,6 +24,7 @@
 		4FE6927126189EED006647F5 /* PostDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6927026189EED006647F5 /* PostDataModel.swift */; };
 		4FE692782619F4B5006647F5 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE692772619F4B5006647F5 /* Box.swift */; };
 		4FE692802619F515006647F5 /* MainTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE6927F2619F515006647F5 /* MainTableViewModel.swift */; };
+		4FE6928A261A5B62006647F5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69289261A5B62006647F5 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		4FE6927026189EED006647F5 /* PostDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataModel.swift; sourceTree = "<group>"; };
 		4FE692772619F4B5006647F5 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		4FE6927F2619F515006647F5 /* MainTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewModel.swift; sourceTree = "<group>"; };
+		4FE69289261A5B62006647F5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4FE692772619F4B5006647F5 /* Box.swift */,
+				4FE69289261A5B62006647F5 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				4FE691FC26174CC7006647F5 /* SceneDelegate.swift in Sources */,
 				4FE6923F261750C8006647F5 /* PostTableViewCell.swift in Sources */,
 				4FE6926626189D25006647F5 /* DataModel.swift in Sources */,
+				4FE6928A261A5B62006647F5 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

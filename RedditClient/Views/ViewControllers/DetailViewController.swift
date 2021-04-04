@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
     func refreshUI() {
         //TODO
         userNameLbl.text = post?.author
+        postImage.load(urlString: post?.thumbnail ?? "")
         titleLbl.text = post?.title
     }
     
