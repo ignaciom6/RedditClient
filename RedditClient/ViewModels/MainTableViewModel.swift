@@ -10,6 +10,7 @@ import UIKit
 class MainTableViewModel: NSObject {
     
     var posts: Box<[PostModel]?> = Box(nil)
+    var error = Box("")
     
     override init() {
         super.init()
@@ -20,7 +21,7 @@ class MainTableViewModel: NSObject {
         RedditService.redditTopPosts() { [weak self] (postsData, error) in
             guard let self = self else {return}
             guard let postsData = postsData else {
-                print("Error: ", error?.localizedDescription ?? "")
+                self.error.value = error?.localizedDescription ?? "Error"
                 return
             }
             self.setPropertiesValuesFromData(postsData: postsData)

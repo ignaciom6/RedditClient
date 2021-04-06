@@ -29,6 +29,18 @@ class MainTableViewController: UITableViewController {
             self?.refreshControl?.endRefreshing()
             self?.tableView.reloadData()
         }
+        
+        viewModel.error.bind { [weak self] error in
+            if !error.isEmpty {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (UIAlertAction) in
+                        self?.dismiss(animated: true, completion: nil)
+                    }))
+                    self?.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @objc func pullToRefresh(sender:AnyObject)
