@@ -34,29 +34,44 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5V-Qe-6Fx">
-                                <rect key="frame" x="20" y="307" width="374" height="67"/>
+                                <rect key="frame" x="20" y="325" width="374" height="67"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="mdW-dJ-bPG"/>
+                                    <constraint firstAttribute="height" constant="67" id="nwQ-EV-Clc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92S-FL-0iD">
+                                <rect key="frame" x="132" y="299" width="150" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Rt8-f9-xAW"/>
+                                    <constraint firstAttribute="height" constant="18" id="zE0-nC-efp"/>
+                                </constraints>
+                                <state key="normal" title="Download Image"/>
+                                <connections>
+                                    <action selector="downloadImage:" destination="bZC-Xx-HeF" eventType="touchUpInside" id="hFA-N2-t7T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ROb-Ee-aX2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="92S-FL-0iD" firstAttribute="centerX" secondItem="SWr-ze-3Nc" secondAttribute="centerX" id="4pl-jE-NUB"/>
+                            <constraint firstItem="ROb-Ee-aX2" firstAttribute="trailing" secondItem="O5V-Qe-6Fx" secondAttribute="trailing" constant="20" id="DBm-BP-aFO"/>
+                            <constraint firstItem="O5V-Qe-6Fx" firstAttribute="leading" secondItem="ROb-Ee-aX2" secondAttribute="leading" constant="20" id="EFb-9z-Hmb"/>
                             <constraint firstItem="SQf-lk-bAk" firstAttribute="centerX" secondItem="SWr-ze-3Nc" secondAttribute="centerX" id="IYH-aU-n17"/>
                             <constraint firstItem="ffu-A9-8Tl" firstAttribute="leading" secondItem="ROb-Ee-aX2" secondAttribute="leading" constant="20" id="UzG-B6-tcz"/>
-                            <constraint firstItem="O5V-Qe-6Fx" firstAttribute="top" secondItem="SQf-lk-bAk" secondAttribute="bottom" constant="8" id="Z7z-pS-vFI"/>
-                            <constraint firstItem="O5V-Qe-6Fx" firstAttribute="leading" secondItem="ROb-Ee-aX2" secondAttribute="leading" constant="20" id="a9A-lD-QHc"/>
                             <constraint firstItem="SQf-lk-bAk" firstAttribute="top" secondItem="ffu-A9-8Tl" secondAttribute="bottom" constant="18" id="as5-YW-jHy"/>
-                            <constraint firstItem="ROb-Ee-aX2" firstAttribute="trailing" secondItem="O5V-Qe-6Fx" secondAttribute="trailing" constant="20" id="aue-hA-xgt"/>
+                            <constraint firstItem="O5V-Qe-6Fx" firstAttribute="top" secondItem="92S-FL-0iD" secondAttribute="bottom" constant="8" symbolic="YES" id="fbw-LO-Guu"/>
+                            <constraint firstItem="92S-FL-0iD" firstAttribute="centerX" secondItem="SWr-ze-3Nc" secondAttribute="centerX" id="jAn-IK-Od1"/>
                             <constraint firstItem="ffu-A9-8Tl" firstAttribute="top" secondItem="ROb-Ee-aX2" secondAttribute="top" constant="22" id="pFO-Ph-G1A"/>
+                            <constraint firstItem="92S-FL-0iD" firstAttribute="top" secondItem="SQf-lk-bAk" secondAttribute="bottom" id="wau-us-NEH"/>
                             <constraint firstItem="ROb-Ee-aX2" firstAttribute="trailing" secondItem="ffu-A9-8Tl" secondAttribute="trailing" constant="20" id="xdp-aJ-Ikm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="downloadBtn" destination="92S-FL-0iD" id="OwR-Yn-xeI"/>
                         <outlet property="postImage" destination="SQf-lk-bAk" id="Da3-o8-Lj8"/>
                         <outlet property="titleLbl" destination="O5V-Qe-6Fx" id="Enb-O5-ua8"/>
                         <outlet property="userNameLbl" destination="ffu-A9-8Tl" id="Z1h-4P-OZw"/>

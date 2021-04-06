@@ -21,12 +21,16 @@ extension UIImageView {
             return
         }
         
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        cache.setObject(image, forKey: urlString as NSString)
-                        self?.image = image
+        if url == URL(string: "self") {
+            self.image = nil
+        } else {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            cache.setObject(image, forKey: urlString as NSString)
+                            self?.image = image
+                        }
                     }
                 }
             }

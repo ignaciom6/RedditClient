@@ -28,6 +28,7 @@
 		4FE69292261A5E85006647F5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE69291261A5E85006647F5 /* DetailViewModel.swift */; };
 		4FE692A5261BEDB2006647F5 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE692A4261BEDB2006647F5 /* DateFormatter.swift */; };
 		4FE692AA261BEE76006647F5 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE692A9261BEE76006647F5 /* LocalData.swift */; };
+		4FE692B7261BF73E006647F5 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE692B6261BF73E006647F5 /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		4FE69291261A5E85006647F5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		4FE692A4261BEDB2006647F5 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		4FE692A9261BEE76006647F5 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		4FE692B6261BF73E006647F5 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				4FE69289261A5B62006647F5 /* Extensions.swift */,
 				4FE692A4261BEDB2006647F5 /* DateFormatter.swift */,
 				4FE692A9261BEE76006647F5 /* LocalData.swift */,
+				4FE692B6261BF73E006647F5 /* ImageSaver.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				4FE6924526175D3A006647F5 /* MainTableViewController.swift in Sources */,
 				4FE692542618942E006647F5 /* PostsDataModel.swift in Sources */,
 				4FE691FA26174CC7006647F5 /* AppDelegate.swift in Sources */,
+				4FE692B7261BF73E006647F5 /* ImageSaver.swift in Sources */,
 				4FE6927126189EED006647F5 /* PostDataModel.swift in Sources */,
 				4FE692802619F515006647F5 /* MainTableViewModel.swift in Sources */,
 				4FE6926126189513006647F5 /* RedditService.swift in Sources */,

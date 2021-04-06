@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var downloadBtn: UIButton!
     
     private let viewModel = DetailViewModel()
     
@@ -26,6 +27,8 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showDownloadButton()
     }
     
     func refreshUI() {
@@ -40,8 +43,21 @@ class DetailViewController: UIViewController {
         viewModel.title.bind { [weak self] title in
             self?.titleLbl.text = title
         }
+        
+        showDownloadButton()
+
     }
     
+    func showDownloadButton() {
+        downloadBtn.isHidden = false
+        if postImage.image == nil {
+            downloadBtn.isHidden = true
+        }
+    }
+    
+    @IBAction func downloadImage(_ sender: Any) {
+        ImageSaver().writeToPhotoAlbum(image: postImage.image ?? UIImage())
+    }
 }
 
 extension DetailViewController: PostSelectionDelegate {
