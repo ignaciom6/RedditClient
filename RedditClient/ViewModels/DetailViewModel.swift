@@ -12,6 +12,7 @@ class DetailViewModel: NSObject {
     var username = Box("")
     var imageURL = Box("")
     var title = Box("")
+    var buttonHidden: Box<Bool> = Box(false)
     
     override init() {
         super.init()
@@ -21,6 +22,15 @@ class DetailViewModel: NSObject {
         self.username.value = postSelected.author
         self.imageURL.value = postSelected.thumbnail
         self.title.value = postSelected.title
+        self.buttonHidden.value = showDownloadButton(forUrl: postSelected.thumbnail)
+    }
+    
+    func showDownloadButton(forUrl url: String) -> Bool {
+        var hidden = false
+        if url == "self" {
+            hidden = true
+        }
+        return hidden
     }
 
 }

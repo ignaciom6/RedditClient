@@ -28,7 +28,6 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showDownloadButton()
     }
     
     func refreshUI() {
@@ -44,15 +43,10 @@ class DetailViewController: UIViewController {
             self?.titleLbl.text = title
         }
         
-        showDownloadButton()
-
-    }
-    
-    func showDownloadButton() {
-        downloadBtn.isHidden = false
-        if postImage.image == nil {
-            downloadBtn.isHidden = true
+        viewModel.buttonHidden.bind { [weak self] buttonHidden in
+            self?.downloadBtn.isHidden = buttonHidden
         }
+        
     }
     
     @IBAction func downloadImage(_ sender: Any) {
