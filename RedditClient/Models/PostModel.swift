@@ -8,6 +8,5 @@
 import Foundation
 
 struct PostModel: Codable {
-    var kind: String?
     var data: PostDataModel
 }
