@@ -61,7 +61,8 @@ class MainTableViewController: UITableViewController {
         cell.titleTxtV.text = post.title
         cell.commentsLbl.text = "Comments " + String(post.comments)
         cell.postImg.load(urlString: post.thumbnail)
-        cell.postViewedImg.isHidden = UserDefaults.standard.bool(forKey: post.thumbnail)
+        cell.postViewedImg.isHidden = LocalData.dataExist(thumbnailUrl: post.thumbnail)
+        cell.postedTimeLbl.text = DateFormatter.getPostedTimeAgo(for: post.created)
         cell.postCell = {
             self.posts.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .left)
@@ -81,7 +82,7 @@ class MainTableViewController: UITableViewController {
         let selectedPost = posts[indexPath.row].data
         delegate?.postSelected(selectedPost)
         
-        UserDefaults.standard.set(true, forKey: selectedPost.thumbnail)
+        LocalData.save(thumbnailUrl: selectedPost.thumbnail)
     }
 
 }
